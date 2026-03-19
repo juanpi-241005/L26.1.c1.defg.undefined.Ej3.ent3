@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edad Personas - Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app-bootstrap" class="container mt-5">
+        <h2>Gestión de Edades (Bootstrap)</h2>
+        <button type="button" class="btn btn-primary" id="body_btnProcesarPersona">Procesar 1 Edad</button>
+        <hr>
+        <div class="alert alert-info">
+            La Edad Promedio de los Registrados sería: <span id="body_lblPromedio" class="fw-bold">0</span>
+        </div>
+        <div class="alert alert-light" id="body_lblEdadesPersonas"></div>
+        <div class="alert alert-light" id="body_lblMayorMenor"></div>
+        <div class="alert alert-light" id="body_lblComparacion"></div>
+        <div class="alert alert-light" id="body_lblPromedioPeso"></div>
+    </div>
+
+    <div class="modal fade" id="persona" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Procesar Edad</h5>
+                </div>
+                <div class="modal-body">
+                    <label>nombre:</label>
+                    <input type="text" class="form-control", id="persona_inNombre" placeholder="Ej: Marco"><br>
+                    <label class="form-label">Edad:</label>
+                    <input type="number" class="form-control" id="persona_inEdad" placeholder="Ej: 25"><br>
+                    <label class="form-label">Peso:</label>
+                    <input type="number" class="form-control", id="persona_inPeso" placeholder="Ej: 90"><br>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="persona_btCancelar">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="persona_btAceptar">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import CI_cPersonas from "./dist/controllers/CI_cPersonas.js";
+        import CI_cPersona from "./dist/controllers/CI_cPersona.js";
+        
+        // Opción: Usar vistas de views-Bootstrap/
+        import CI_vPersonas from "./dist/views/CI_vPersonasBootstrap.js";
+        import CI_vPersona from "./dist/views/CI_vPersonaBootstrap.js";
+
+        const vistaPersonas = new CI_vPersonas();
+        const vistaPersona = new CI_vPersona();
+        const controladorPersona = new CI_cPersona(vistaPersona);
+        new CI_cPersonas(vistaPersonas, controladorPersona);
+    </script>
+</body>
+</html>
